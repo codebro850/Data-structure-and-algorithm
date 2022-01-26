@@ -78,7 +78,7 @@ class linkedlist():
             current_node = current_node.next
         if current_node.next != None:
             current_node.next = current_node.next.next
-            if current_node == None:
+            if current_node.next == None:
                 self.tail = current_node
             self.length -= 1
             return
