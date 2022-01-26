@@ -85,6 +85,27 @@ class linkedlist():
         else:
             print('Given', data, 'value not found')
 
+    def delete_by_position(self, position):
+        current_node = self.head
+        if position >= self.length:
+            if position > self.length:
+                print('Position is not present so operation can be performed')
+            return
+        elif position == 0:
+            self.head = current_node.next
+            if self.head == None or self.head.next == None:
+                self.tail = self.head
+            self.length -= 1
+            return
+        else:
+            for i in range(position-1):
+                current_node = current_node.next
+            current_node.next = current_node.next.next
+            if current_node.next == None:
+                self.tail = current_node
+            self.length -= 1
+            return
+
 
 if __name__ == '__main__':
     mylinkedlist = linkedlist()
@@ -103,3 +124,5 @@ if __name__ == '__main__':
     mylinkedlist.delete(5)
     mylinkedlist.print_list()
     mylinkedlist.delete(9)
+    mylinkedlist.delete_by_position(5)
+    mylinkedlist.print_list()
